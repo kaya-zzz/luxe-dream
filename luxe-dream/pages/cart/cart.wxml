@@ -1,0 +1,38 @@
+<view class="cart-container">
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{cartItems.length === 0}}">
+    <text class="empty-icon">🛒</text>
+    <text class="empty-text">购物车是空的</text>
+    <text class="empty-sub">去浏览页滑动挑选心仪的商品吧</text>
+  </view>
+
+  <!-- 购物车列表 -->
+  <scroll-view class="cart-list" scroll-y wx:else>
+    <view 
+      class="cart-item {{item.removing ? 'removing' : ''}}" 
+      wx:for="{{cartItems}}" 
+      wx:key="id"
+    >
+      <view class="item-icon">
+        <image class="item-thumb" src="{{item.image}}" mode="aspectFill" />
+      </view>
+      <view class="item-info">
+        <text class="item-name">{{item.name}}</text>
+        <text class="item-brand">{{item.brand}}</text>
+        <text class="item-price">¥ {{item.price}}</text>
+      </view>
+      <view class="item-delete" bindtap="removeItem" data-id="{{item.id}}">
+        <text>×</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部购买按钮 -->
+  <view class="cart-footer" wx:if="{{cartItems.length > 0}}">
+    <view class="purchase-btn {{purchasing ? 'purchasing' : ''}}" bindtap="virtualPurchase">
+      <text wx:if="{{!purchasing}}">虚拟购买 ✨</text>
+      <text wx:else>购买成功！🎉</text>
+    </view>
+    <text class="item-count">共 {{cartItems.length}} 件商品</text>
+  </view>
+</view>

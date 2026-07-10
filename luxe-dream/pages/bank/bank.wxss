@@ -1,0 +1,307 @@
+.bank-container {
+  height: 100vh;
+  background: #ffffff;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+/* 资产卡片 */
+.asset-card {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  border-radius: 28rpx;
+  padding: 48rpx 40rpx;
+  color: #ffffff;
+  margin-bottom: 32rpx;
+}
+
+.asset-label {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 2rpx;
+}
+
+.asset-amount {
+  display: flex;
+  align-items: baseline;
+  margin-top: 16rpx;
+}
+
+.currency {
+  font-size: 32rpx;
+  font-weight: 300;
+  margin-right: 8rpx;
+  opacity: 0.8;
+}
+
+.amount-value {
+  font-size: 56rpx;
+  font-weight: 700;
+  font-family: 'SF Mono', 'Menlo', monospace;
+  letter-spacing: -1rpx;
+}
+
+.interest-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.interest-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.interest-value {
+  font-size: 24rpx;
+  color: #7bed9f;
+  font-family: monospace;
+}
+
+.rate-info {
+  margin-top: 16rpx;
+  font-size: 20rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* 本次浏览收益 - 增强卡片 */
+.session-earning-card {
+  background: linear-gradient(145deg, #f0fdf4, #ecfdf5, #f0fdf4);
+  border: 1rpx solid rgba(74, 222, 128, 0.2);
+  border-radius: 24rpx;
+  padding: 36rpx 32rpx;
+  margin-bottom: 32rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.session-earning-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 300rpx;
+  height: 300rpx;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.session-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.session-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.session-dot.pulse {
+  animation: dotPulse 1.5s ease-in-out infinite;
+}
+
+.session-title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #166534;
+}
+
+.session-duration {
+  font-size: 22rpx;
+  color: #86efac;
+  background: rgba(22, 101, 52, 0.08);
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-family: monospace;
+}
+
+.session-amount-row {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20rpx;
+}
+
+.session-currency {
+  font-size: 30rpx;
+  color: #16a34a;
+  font-weight: 500;
+  margin-right: 6rpx;
+}
+
+.session-amount {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #15803d;
+  font-family: 'SF Mono', 'Menlo', monospace;
+  letter-spacing: -1rpx;
+}
+
+.session-amount.counting {
+  animation: amountGlow 2s ease-in-out infinite;
+}
+
+.session-speed {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.speed-label {
+  font-size: 22rpx;
+  color: #6b7280;
+}
+
+.speed-value {
+  font-size: 22rpx;
+  color: #16a34a;
+  font-family: monospace;
+  font-weight: 500;
+}
+
+/* 收益进度条 */
+.earning-progress {
+  margin-bottom: 20rpx;
+}
+
+.progress-bar {
+  height: 8rpx;
+  background: rgba(74, 222, 128, 0.15);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80, #16a34a);
+  border-radius: 4rpx;
+  transition: width 1s ease-out;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.progress-start {
+  font-size: 18rpx;
+  color: #9ca3af;
+}
+
+.progress-milestone {
+  font-size: 18rpx;
+  color: #6b7280;
+}
+
+/* 趣味文案 */
+.fun-fact {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(74, 222, 128, 0.15);
+}
+
+.fun-icon {
+  font-size: 24rpx;
+}
+
+.fun-text {
+  font-size: 22rpx;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* 动画 */
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+@keyframes amountGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 消费记录 */
+.records-section {
+  margin-top: 16rpx;
+}
+
+.records-list {
+  margin-top: 20rpx;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.record-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.record-desc {
+  font-size: 26rpx;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.record-date {
+  font-size: 20rpx;
+  color: #bbb;
+  margin-top: 4rpx;
+}
+
+.record-amount {
+  font-size: 26rpx;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.record-amount.positive {
+  color: #4caf50;
+}
+
+.record-amount.negative {
+  color: #e57373;
+}
+
+/* 空记录 */
+.empty-records {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0;
+  color: #ccc;
+  font-size: 26rpx;
+}
+
+.empty-hint {
+  font-size: 22rpx;
+  color: #ddd;
+  margin-top: 8rpx;
+}

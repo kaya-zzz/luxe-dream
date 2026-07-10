@@ -1,0 +1,75 @@
+<scroll-view class="bank-container" scroll-y>
+  <!-- 资产卡片 -->
+  <view class="asset-card">
+    <text class="asset-label">总资产</text>
+    <view class="asset-amount">
+      <text class="currency">¥</text>
+      <text class="amount-value">{{displayBalance}}</text>
+    </view>
+    <view class="interest-row">
+      <text class="interest-label">实时利息</text>
+      <text class="interest-value">+¥{{displayInterest}}/秒</text>
+    </view>
+    <view class="rate-info">
+      <text>年化收益率 10%</text>
+    </view>
+  </view>
+
+  <!-- 本次浏览收益 - 增强卡片 -->
+  <view class="session-earning-card">
+    <view class="session-header">
+      <view class="session-title-row">
+        <text class="session-dot {{isEarning ? 'pulse' : ''}}"></text>
+        <text class="session-title">本次浏览收益</text>
+      </view>
+      <text class="session-duration">{{sessionDuration}}</text>
+    </view>
+
+    <view class="session-amount-row">
+      <text class="session-currency">+¥</text>
+      <text class="session-amount {{isEarning ? 'counting' : ''}}">{{todayInterest}}</text>
+    </view>
+
+    <view class="session-speed">
+      <text class="speed-label">收益速率</text>
+      <text class="speed-value">¥{{displayInterest}}/秒</text>
+    </view>
+
+    <!-- 收益进度条 -->
+    <view class="earning-progress">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progressPercent}}%;"></view>
+      </view>
+      <view class="progress-labels">
+        <text class="progress-start">¥0</text>
+        <text class="progress-milestone">距下一个 ¥{{nextMilestone}} 还差 ¥{{milestoneGap}}</text>
+      </view>
+    </view>
+
+    <!-- 趣味文案 -->
+    <view class="fun-fact" wx:if="{{funFact}}">
+      <text class="fun-icon">💡</text>
+      <text class="fun-text">{{funFact}}</text>
+    </view>
+  </view>
+
+  <!-- 消费记录 -->
+  <view class="records-section">
+    <text class="section-title">消费记录</text>
+    <view class="records-list" wx:if="{{records.length > 0}}">
+      <view class="record-item" wx:for="{{records}}" wx:key="index">
+        <view class="record-left">
+          <text class="record-desc">{{item.desc}}</text>
+          <text class="record-date">{{item.date}}{{item.brand ? ' · ' + item.brand : ''}}</text>
+        </view>
+      <text class="record-amount {{item.amount > 0 ? 'positive' : 'negative'}}">
+          {{item.amount > 0 ? '+' : ''}}¥{{item.displayAmount}}
+        </text>
+      </view>
+    </view>
+    <view class="empty-records" wx:else>
+      <text>暂无消费记录</text>
+      <text class="empty-hint">去购物车「虚拟购买」试试？</text>
+    </view>
+  </view>
+</scroll-view>

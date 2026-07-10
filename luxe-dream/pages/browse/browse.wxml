@@ -1,0 +1,53 @@
+<view class="browse-container">
+  <!-- 品类名称指示器 -->
+  <view class="category-indicator {{categoryAnimClass}}">
+    <text class="category-icon">{{currentCategory.icon}}</text>
+    <text class="category-name">{{currentCategory.name}}</text>
+  </view>
+
+  <!-- 品牌名 顶部 -->
+  <view class="brand-area">
+    <text class="brand-text">{{currentProduct.brand}}</text>
+  </view>
+
+  <!-- 商品主体区域 - 手势识别 -->
+  <view 
+    class="product-area"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+  >
+    <!-- 商品图片 -->
+    <view class="product-image-wrap {{slideAnimClass}}" style="transform: translateX({{offsetX}}px); opacity: {{imageOpacity}};">
+      <image class="product-image" src="{{currentProduct.image}}" mode="aspectFill" />
+    </view>
+  </view>
+
+  <!-- 商品信息 底部 -->
+  <view class="product-info">
+    <text class="product-name">{{currentProduct.name}}</text>
+    <text class="product-desc">{{currentProduct.description}}</text>
+    <text class="product-price">¥ {{currentProduct.displayPrice}}</text>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="action-bar">
+    <view class="circle-btn cart-btn" bindtap="addToCart">
+      <text class="btn-icon">🛒</text>
+    </view>
+  </view>
+
+  <!-- 滑动提示（首次进入时显示，底部半透明浮层） -->
+  <view class="swipe-hint {{showHint ? '' : 'hidden'}}" bindtap="dismissHint">
+    <view class="hint-content">
+      <view class="hint-horizontal">← 左右滑动切换商品 →</view>
+      <view class="hint-vertical">↑ 上下滑动切换品类 ↓</view>
+      <view class="hint-dismiss">轻触关闭</view>
+    </view>
+  </view>
+
+  <!-- 加入购物车成功提示 -->
+  <view class="toast {{showToast ? 'show' : ''}}">
+    <text>已加入购物车 ✓</text>
+  </view>
+</view>
